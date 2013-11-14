@@ -25,3 +25,6 @@ pom.xml.*
 local.properties
 build.xml
 proguard-project.txt
+
+
+build
