@@ -1,8 +1,5 @@
 package com.doomonafireball.betterpickers.datepicker;
 
-import com.doomonafireball.betterpickers.R;
-import com.doomonafireball.betterpickers.widget.UnderlinePageIndicatorPicker;
-
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -21,6 +18,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.doomonafireball.betterpickers.R;
+import com.doomonafireball.betterpickers.widget.UnderlinePageIndicatorPicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -414,6 +414,8 @@ public class DatePicker extends LinearLayout implements Button.OnClickListener,
                 case DateFormat.MONTH:
                     if (mMonthInput != -1) {
                         mMonthInput = -1;
+                    } else if (mKeyboardPager.getCurrentItem() > 0) {
+                        mKeyboardPager.setCurrentItem(mKeyboardPager.getCurrentItem() - 1, true);
                     }
                     break;
                 case DateFormat.DATE:
