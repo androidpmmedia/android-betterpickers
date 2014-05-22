@@ -893,8 +893,8 @@ public class DatePicker extends LinearLayout implements Button.OnClickListener,
             super(in);
             mDateInputPointer = in.readInt();
             mYearInputPointer = in.readInt();
-            in.readIntArray(mDateInput);
-            in.readIntArray(mYearInput);
+            mDateInput = in.createIntArray();
+            mYearInput = in.createIntArray();
             mMonthInput = in.readInt();
         }
 
