@@ -13,16 +13,16 @@ import android.support.v4.app.FragmentTransaction;
  */
 public class SampleHmsUsingFragment extends BaseSampleActivity {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.frame_layout);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.frame_layout);
 
-        Fragment fragment = new SampleHmsFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    Fragment fragment = new SampleHmsFragment();
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.frame, fragment);
+    transaction.replace(R.id.frame, fragment);
 
-        transaction.commit();
-    }
+    transaction.commit();
+  }
 }

@@ -15,44 +15,44 @@ import android.widget.Toast;
  * User: derek Date: 3/17/13 Time: 3:59 PM
  */
 public class SampleHmsMultipleHandlers extends BaseSampleActivity
-        implements HmsPickerDialogFragment.HmsPickerDialogHandler {
+    implements HmsPickerDialogFragment.HmsPickerDialogHandler {
 
-    private TextView text;
-    private Button button;
+  private TextView text;
+  private Button button;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.text_and_button);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.text_and_button);
 
-        text = (TextView) findViewById(R.id.text);
-        button = (Button) findViewById(R.id.button);
+    text = (TextView) findViewById(R.id.text);
+    button = (Button) findViewById(R.id.button);
 
-        text.setText("--");
-        button.setText("Set Hms");
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HmsPickerBuilder hpb = new HmsPickerBuilder()
-                        .setFragmentManager(getSupportFragmentManager())
-                        .setStyleResId(R.style.BetterPickersDialogFragment)
-                        .addHmsPickerDialogHandler(new MyCustomHandler());
-                hpb.show();
-            }
-        });
-    }
+    text.setText("--");
+    button.setText("Set Hms");
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        HmsPickerBuilder hpb =
+            new HmsPickerBuilder().setFragmentManager(getSupportFragmentManager())
+                .setStyleResId(R.style.BetterPickersDialogFragment)
+                .addHmsPickerDialogHandler(new MyCustomHandler());
+        hpb.show();
+      }
+    });
+  }
 
-    class MyCustomHandler implements HmsPickerDialogFragment.HmsPickerDialogHandler {
-
-        @Override
-        public void onDialogHmsSet(int reference, int hours, int minutes, int seconds) {
-            Toast.makeText(SampleHmsMultipleHandlers.this, "MyCustomHandler onDialogHmsSet!", Toast.LENGTH_SHORT)
-                    .show();
-        }
-    }
+  class MyCustomHandler implements HmsPickerDialogFragment.HmsPickerDialogHandler {
 
     @Override
     public void onDialogHmsSet(int reference, int hours, int minutes, int seconds) {
-        text.setText("" + hours + ":" + minutes + ":" + seconds);
+      Toast.makeText(SampleHmsMultipleHandlers.this, "MyCustomHandler onDialogHmsSet!",
+          Toast.LENGTH_SHORT).show();
     }
+  }
+
+  @Override
+  public void onDialogHmsSet(int reference, int hours, int minutes, int seconds) {
+    text.setText("" + hours + ":" + minutes + ":" + seconds);
+  }
 }

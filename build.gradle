@@ -1,22 +1,22 @@
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+  repositories {
+    mavenCentral()
+  }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
-    }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.12.+'
+  }
 }
 
 allprojects {
-    group = 'com.doomonafireball.betterpickers'
-    version = '1.4.0'
+  group = 'com.doomonafireball.betterpickers'
+  version = '1.4.0'
 
-    repositories {
-        mavenCentral()
-    }
+  repositories {
+    mavenCentral()
+  }
 
-    tasks.withType(Compile) {
-        options.encoding = "UTF-8"
-    }
+  tasks.withType(Compile) {
+    options.encoding = "UTF-8"
+  }
 }

@@ -15,46 +15,53 @@ import android.widget.Toast;
  * User: derek Date: 3/17/13 Time: 3:59 PM
  */
 public class SampleNumberMultipleHandlers extends BaseSampleActivity
-        implements NumberPickerDialogFragment.NumberPickerDialogHandler {
+    implements NumberPickerDialogFragment.NumberPickerDialogHandler {
 
-    private TextView text;
-    private Button button;
+  private TextView text;
+  private Button button;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.text_and_button);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.text_and_button);
 
-        text = (TextView) findViewById(R.id.text);
-        button = (Button) findViewById(R.id.button);
+    text = (TextView) findViewById(R.id.text);
+    button = (Button) findViewById(R.id.button);
 
-        text.setText("--");
-        button.setText("Set Number");
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NumberPickerBuilder npb = new NumberPickerBuilder()
-                        .setFragmentManager(getSupportFragmentManager())
-                        .setStyleResId(R.style.BetterPickersDialogFragment)
-                        .addNumberPickerDialogHandler(new MyCustomHandler());
-                npb.show();
-            }
-        });
-    }
+    text.setText("--");
+    button.setText("Set Number");
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        NumberPickerBuilder npb =
+            new NumberPickerBuilder().setFragmentManager(getSupportFragmentManager())
+                .setStyleResId(R.style.BetterPickersDialogFragment)
+                .addNumberPickerDialogHandler(new MyCustomHandler());
+        npb.show();
+      }
+    });
+  }
 
-    class MyCustomHandler implements NumberPickerDialogFragment.NumberPickerDialogHandler {
-
-        @Override
-        public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative,
-                double fullNumber) {
-            Toast.makeText(SampleNumberMultipleHandlers.this, "MyCustomHandler onDialogNumberSet!", Toast.LENGTH_SHORT)
-                    .show();
-        }
-    }
+  class MyCustomHandler implements NumberPickerDialogFragment.NumberPickerDialogHandler {
 
     @Override
-    public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-        text.setText("Number: " + number + "\nDecimal: " + decimal + "\nIs negative: " + isNegative + "\nFull number: "
-                + fullNumber);
+    public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative,
+        double fullNumber) {
+      Toast.makeText(SampleNumberMultipleHandlers.this, "MyCustomHandler onDialogNumberSet!",
+          Toast.LENGTH_SHORT).show();
     }
+  }
+
+  @Override
+  public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative,
+      double fullNumber) {
+    text.setText("Number: "
+        + number
+        + "\nDecimal: "
+        + decimal
+        + "\nIs negative: "
+        + isNegative
+        + "\nFull number: "
+        + fullNumber);
+  }
 }

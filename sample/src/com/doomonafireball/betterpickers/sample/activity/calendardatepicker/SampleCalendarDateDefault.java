@@ -16,36 +16,37 @@ import android.widget.TextView;
  * User: derek Date: 3/17/13 Time: 3:59 PM
  */
 public class SampleCalendarDateDefault extends BaseSampleActivity
-        implements CalendarDatePickerDialog.OnDateSetListener {
+    implements CalendarDatePickerDialog.OnDateSetListener {
 
-    private TextView text;
-    private Button button;
+  private TextView text;
+  private Button button;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.text_and_button);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.text_and_button);
 
-        text = (TextView) findViewById(R.id.text);
-        button = (Button) findViewById(R.id.button);
+    text = (TextView) findViewById(R.id.text);
+    button = (Button) findViewById(R.id.button);
 
-        text.setText("--");
-        button.setText("Set Date");
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getSupportFragmentManager();
-                DateTime now = DateTime.now();
-                CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
-                        .newInstance(SampleCalendarDateDefault.this, now.getYear(), now.getMonthOfYear() - 1,
-                                now.getDayOfMonth());
-                calendarDatePickerDialog.show(fm, "fragment_date_picker_name");
-            }
-        });
-    }
+    text.setText("--");
+    button.setText("Set Date");
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        FragmentManager fm = getSupportFragmentManager();
+        DateTime now = DateTime.now();
+        CalendarDatePickerDialog calendarDatePickerDialog =
+            CalendarDatePickerDialog.newInstance(SampleCalendarDateDefault.this, now.getYear(),
+                now.getMonthOfYear() - 1, now.getDayOfMonth());
+        calendarDatePickerDialog.show(fm, "fragment_date_picker_name");
+      }
+    });
+  }
 
-    @Override
-    public void onDateSet(CalendarDatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth) {
-        text.setText("Year: " + year + "\nMonth: " + monthOfYear + "\nDay: " + dayOfMonth);
-    }
+  @Override
+  public void onDateSet(CalendarDatePickerDialog dialog, int year, int monthOfYear,
+      int dayOfMonth) {
+    text.setText("Year: " + year + "\nMonth: " + monthOfYear + "\nDay: " + dayOfMonth);
+  }
 }
